@@ -1,31 +1,15 @@
-name: advanced-ci
+name: marketplace-hello-world
 
 on:
   push:
-    branches:
-      - main
-
-  pull_request:
+  workflow_dispatch:
 
 jobs:
-  test:
+  hello-world:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Running tests"
-
-  build:
-    runs-on: ubuntu-latest
-    needs: test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
-    steps:
-      - run: echo "Building application for main"
-
-  pr-check:
-    runs-on: ubuntu-latest
-    needs: test
-    if: github.event_name == 'pull_request'
-
-    steps:
-      - run: echo "Running pull request checks"
+      - name: Run Hello World JS Action
+        uses: actions/hello-world-javascript-action@main
+        with:
+          who-to-greet: "Hello GitHub Actions Student"
