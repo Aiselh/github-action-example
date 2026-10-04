@@ -160,5 +160,3 @@ jobs:
     steps:
       - name: Post install
         run: echo "Post-install tasks would run here"
-```
-
